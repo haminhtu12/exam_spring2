@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Candidate id</th>
+            <th>name</th>
+            <th>gender</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>birthDay</th>
+            <th>&nbsp;</th>
+            <th>
+                <!--            <a th:href="@{/candidates/addOrEdit}">new student</a>-->
+                <a th:href="@{/candidates/add}">New Candidate</a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="candidate: ${candidates}">
+            <td th:text="${candidate.id}"></td>
+            <td th:text="${candidate.name}"></td>
+            <td th:text="${candidate.gender}"></td>
+            <td th:text="${candidate.email}"></td>
+            <td th:text="${candidate.phone}"></td>
+            <td th:text="${candidate.birthDay}"></td>
+            <td>
+                <a th:href="@{'/candidates/edit/' + ${candidate.id}}">edit</a>
+                <a th:href="@{'/candidates/delete/' + ${candidate.id}}">delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div></body>
+</html>

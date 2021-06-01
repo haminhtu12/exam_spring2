@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymelead.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <form  th:action="@{/candidates/addOrEdit}" method="post" th:object="${candidateDto}" enctype="multipart/form-data" class="was-validated">
+        <div class="form-group">
+            <input th:field="*{id}" placeholder="Id" type="text" hidden><br>
+            <div th:if="${#fields.hasErrors('id')}" th:errorclass="error" th:errors="*{id}"/>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <label for="name">name:</label>
+            <input class="form-control"    th:field="*{name}" placeholder="name" type="text" id="name">
+            <div   th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}"></div>
+
+        </div>
+
+
+        <div class="form-group">
+            <label for="name">gender:</label>
+            <input class="form-control"    th:field="*{gender}" placeholder="name" type="text" id="gender">
+            <div   th:if="${#fields.hasErrors('gender')}" th:errorclass="error" th:errors="*{gender}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">email:</label>
+            <input class="form-control"    th:field="*{email}" placeholder="name" type="text" id="email">
+            <div   th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">phone:</label>
+            <input class="form-control"    th:field="*{phone}" placeholder="name" type="text" id="phone">
+            <div   th:if="${#fields.hasErrors('phone')}" th:errorclass="error" th:errors="*{phone}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">birthDay:</label>
+            <input class="form-control"    th:field="*{birthDay}" placeholder="name" type="text" id="birthDay">
+            <div   th:if="${#fields.hasErrors('birthDay')}" th:errorclass="error" th:errors="*{birthDay}"></div>
+        </div>
+
+
+<!--        <a th:href="@{/candidates/addOrEdit}"> ++New</a> <br>-->
+        <a th:href="@{/candidates/list}"> list - candidate </a>
+
+        <button type="submit" class="btn btn-primary" value="Submit" >Submit</button>
+    </form>
+
+
+</div>
+
+
+</body>
+</html>
